@@ -1,0 +1,23 @@
+# Set default behavior for text files to normalize line endings
+* text=auto
+
+# Force LF endings for source files
+*.java text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+
+# Treat binary files properly
+*.jar binary
+*.zip binary
+*.war binary
+*.exe binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.class binary
+
+# GitHub linguist language override (optional)
+*.iml linguist-language=Java

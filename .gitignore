@@ -1,0 +1,46 @@
+# Ignore build output
+/target/
+
+# Logs
+*.log
+/logs/
+
+# Maven wrapper
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
+
+# IDEs
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VSCode
+.vscode/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Test/Reports/Artifacts
+allure-report/
+allure-results/
+test-output/
+*.ser
+
+# Temp files
+*.swp
+*.tmp
+*.bak
+
+# Environment/config
+.env
+*.properties
