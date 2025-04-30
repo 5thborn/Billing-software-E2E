@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-04-27T13:37:37 PDT" name="Zoho Billing Test Suite" finished-at="2025-04-27T13:40:16 PDT" duration-ms="158233">
+    <groups>
+    </groups>
+    <test started-at="2025-04-27T13:37:37 PDT" name="Billing Tests" finished-at="2025-04-27T13:40:16 PDT" duration-ms="158233">
+      <class name="com.skylark.automation.Billing_software_E2E.BillingDashboardTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@64693226]" started-at="2025-04-27T13:37:37 PDT" name="setUp" finished-at="2025-04-27T13:37:50 PDT" duration-ms="12695" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testBillingAndShippingAddress()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@64693226]" started-at="2025-04-27T13:37:50 PDT" name="testBillingAndShippingAddress" finished-at="2025-04-27T13:40:15 PDT" duration-ms="145025" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBillingAndShippingAddress -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@64693226]" started-at="2025-04-27T13:40:15 PDT" name="tearDown" finished-at="2025-04-27T13:40:16 PDT" duration-ms="268" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.skylark.automation.Billing_software_E2E.BillingDashboardTest -->
+    </test> <!-- Billing Tests -->
+  </suite> <!-- Zoho Billing Test Suite -->
+</testng-results>

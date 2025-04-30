@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Zoho Billing Test Suite">
+  <test name="Billing Tests">
+    <classes>
+      <class name="com.skylark.automation.Billing_software_E2E.BillingDashboardTest"/>
+    </classes>
+  </test>
+</suite>
