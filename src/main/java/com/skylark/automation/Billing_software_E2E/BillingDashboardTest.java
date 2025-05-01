@@ -79,11 +79,6 @@ public class BillingDashboardTest {
             dashboardPage.selectEthanClarke();
             captureScreenshot("After selecting Ethan Clarke");
 
-            logger.info("Clicking on 'Overview' tab...");
-            Allure.step("Clicking on 'Overview' tab");
-            dashboardPage.clickOverviewTab();
-            captureScreenshot("After clicking Overview tab");
-
             String billing = dashboardPage.getBillingAddress();
             String shipping = dashboardPage.getShippingAddress();
 

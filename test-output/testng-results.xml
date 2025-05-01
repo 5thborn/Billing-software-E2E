@@ -1,21 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-27T13:37:37 PDT" name="Zoho Billing Test Suite" finished-at="2025-04-27T13:40:16 PDT" duration-ms="158233">
+  <suite started-at="2025-04-30T18:33:26 PDT" name="Zoho Billing Test Suite" finished-at="2025-04-30T18:38:06 PDT" duration-ms="280679">
     <groups>
     </groups>
-    <test started-at="2025-04-27T13:37:37 PDT" name="Billing Tests" finished-at="2025-04-27T13:40:16 PDT" duration-ms="158233">
+    <test started-at="2025-04-30T18:33:26 PDT" name="Billing Tests" finished-at="2025-04-30T18:38:06 PDT" duration-ms="280679">
       <class name="com.skylark.automation.Billing_software_E2E.BillingDashboardTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@64693226]" started-at="2025-04-27T13:37:37 PDT" name="setUp" finished-at="2025-04-27T13:37:50 PDT" duration-ms="12695" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@327ed9f5]" started-at="2025-04-30T18:33:26 PDT" name="setUp" finished-at="2025-04-30T18:33:40 PDT" duration-ms="14650" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testBillingAndShippingAddress()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@64693226]" started-at="2025-04-27T13:37:50 PDT" name="testBillingAndShippingAddress" finished-at="2025-04-27T13:40:15 PDT" duration-ms="145025" status="PASS">
+        <test-method signature="testBillingAndShippingAddress()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@327ed9f5]" started-at="2025-04-30T18:33:40 PDT" name="testBillingAndShippingAddress" finished-at="2025-04-30T18:38:06 PDT" duration-ms="265691" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Exception occurred: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[text()='Billing Address']/following-sibling::div' (tried for 45 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Exception occurred: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[text()='Billing Address']/following-sibling::div' (tried for 45 second(s) with 500 milliseconds interval)
+at org.testng.Assert.fail(Assert.java:111)
+at com.skylark.automation.Billing_software_E2E.BillingDashboardTest.testBillingAndShippingAddress(BillingDashboardTest.java:121)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBillingAndShippingAddress -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@64693226]" started-at="2025-04-27T13:40:15 PDT" name="tearDown" finished-at="2025-04-27T13:40:16 PDT" duration-ms="268" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.skylark.automation.Billing_software_E2E.BillingDashboardTest@327ed9f5]" started-at="2025-04-30T18:38:06 PDT" name="tearDown" finished-at="2025-04-30T18:38:06 PDT" duration-ms="181" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

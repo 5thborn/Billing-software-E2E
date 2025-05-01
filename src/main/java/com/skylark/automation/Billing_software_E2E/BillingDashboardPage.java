@@ -134,11 +134,6 @@ public class BillingDashboardPage {
         }
     }
 
-    @Step("Clicking on Overview tab")
-    public void clickOverviewTab() {
-        wait.until(ExpectedConditions.elementToBeClickable(overviewTab)).click();
-    }
-
     @Step("Retrieving billing address information")
     public String getBillingAddress() {
         return wait.until(ExpectedConditions.visibilityOf(billingAddress)).getText();
