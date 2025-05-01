@@ -2,19 +2,24 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk-21'
+        jdk 'JDK21'
         maven 'maven1'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/Billing-software-E2E.git' // replace with your actual repo
+                git 'https://github.com/5thborn/Billing-software-E2E.git'
             }
         }
 
         stage('Prepare Metadata') {
             steps {
+                // Ensure directories exist
+                bat '''
+                if not exist "Billing-software-E2E\\target\\allure-results" mkdir "Billing-software-E2E\\target\\allure-results"
+                '''
+                
                 // Create Allure environment files
                 writeFile file: 'Billing-software-E2E/target/allure-results/environment.properties', text: '''
 OS=Windows 11 Home
@@ -60,7 +65,8 @@ Environment=QA
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            // Try a more general pattern for JUnit results
+            junit '**/target/surefire-reports/TEST-*.xml'
         }
     }
 }
