@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/5thborn/Billing-software-E2E.git'
+                git branch: 'main', url: 'https://github.com/5thborn/Billing-software-E2E.git'
             }
         }
 
