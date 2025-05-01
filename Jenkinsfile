@@ -15,13 +15,13 @@ pipeline {
 
         stage('Prepare Metadata') {
             steps {
-                // Ensure directories exist
+                // Ensure directories exist - note the removed Billing-software-E2E directory
                 bat '''
-                if not exist "Billing-software-E2E\\target\\allure-results" mkdir "Billing-software-E2E\\target\\allure-results"
+                if not exist "target\\allure-results" mkdir "target\\allure-results"
                 '''
                 
-                // Create Allure environment files
-                writeFile file: 'Billing-software-E2E/target/allure-results/environment.properties', text: '''
+                // Create Allure environment files - note the removed Billing-software-E2E directory
+                writeFile file: 'target/allure-results/environment.properties', text: '''
 OS=Windows 11 Home
 Java.Version=21
 Browser=Chrome 124
@@ -31,7 +31,7 @@ Build.Version=1.0.0
 Environment=QA
                 '''.stripIndent()
 
-                writeFile file: 'Billing-software-E2E/target/allure-results/executor.json', text: """
+                writeFile file: 'target/allure-results/executor.json', text: """
 {
   "buildName": "${env.JOB_NAME} #${env.BUILD_NUMBER}",
   "buildOrder": "${env.BUILD_NUMBER}",
@@ -48,9 +48,8 @@ Environment=QA
 
         stage('Build & Test') {
             steps {
-                dir('Billing-software-E2E') {
-                    bat 'mvn clean test'
-                }
+                // No dir() wrapper needed - we're already in the project root
+                bat 'mvn clean test'
             }
         }
 
@@ -58,7 +57,7 @@ Environment=QA
             steps {
                 allure includeProperties: false,
                        jdk: '',
-                       results: [[path: 'Billing-software-E2E/target/allure-results']]
+                       results: [[path: 'target/allure-results']] // note the removed Billing-software-E2E directory
             }
         }
     }
