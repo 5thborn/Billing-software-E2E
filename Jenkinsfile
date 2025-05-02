@@ -1,26 +1,29 @@
 pipeline {
     agent any
-
+    
+    triggers {
+        // Run tests every day at 5 PM
+        cron('0 17 * * *')
+    }
+    
     tools {
         jdk 'JDK21'
         maven 'maven1'
     }
-
+    
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/5thborn/Billing-software-E2E.git'
             }
         }
-
+        
         stage('Prepare Metadata') {
             steps {
-                // Ensure directories exist - note the removed Billing-software-E2E directory
                 bat '''
                 if not exist "target\\allure-results" mkdir "target\\allure-results"
                 '''
                 
-                // Create Allure environment files - note the removed Billing-software-E2E directory
                 writeFile file: 'target/allure-results/environment.properties', text: '''
 OS=Windows 11 Home
 Java.Version=21
@@ -30,7 +33,7 @@ Tester=Kasha
 Build.Version=1.0.0
 Environment=QA
                 '''.stripIndent()
-
+                
                 writeFile file: 'target/allure-results/executor.json', text: """
 {
   "buildName": "${env.JOB_NAME} #${env.BUILD_NUMBER}",
@@ -45,27 +48,68 @@ Environment=QA
 """
             }
         }
-
+        
         stage('Build & Test') {
             steps {
-                // No dir() wrapper needed - we're already in the project root
                 bat 'mvn clean test'
             }
         }
-
+        
         stage('Allure Report') {
             steps {
                 allure includeProperties: false,
                        jdk: '',
-                       results: [[path: 'target/allure-results']] // note the removed Billing-software-E2E directory
+                       results: [[path: 'target/allure-results']]
+            }
+        }
+        
+        stage('Deploy to Stage') {
+            when {
+                branch 'main'
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                bat '''
+                echo Deploying to staging environment...
+                # Add your deployment commands here
+                '''
+            }
+        }
+        
+        stage('Deploy to Production') {
+            when {
+                branch 'main'
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            input message: 'Deploy to production?', ok: 'Deploy'
+            steps {
+                bat '''
+                echo Deploying to production environment...
+                # Add production deployment commands here
+                '''
             }
         }
     }
-
+    
     post {
         always {
-            // Try a more general pattern for JUnit results
             junit '**/target/surefire-reports/TEST-*.xml'
+        }
+        success {
+            emailext (
+                subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                         <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+                recipientProviders: [developers(), requestor()]
+            )
+        }
+        failure {
+            emailext (
+                subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                         <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+                recipientProviders: [developers(), requestor()]
+            )
         }
     }
 }
